@@ -1,11 +1,17 @@
 import { connect } from 'react-redux';
 import Form from './Form';
-import setInput from '../../Modules/actions';
+import { setInput, nextPage } from '../../Modules/actions';
 
 const mapDispatchToProps = dispatch => ({
   onSubmitInput: (value) => {
     dispatch(setInput(value));
+    dispatch(nextPage());
   },
 });
 
-export default connect(null, mapDispatchToProps)(Form);
+const mapStateToProps = state => ({
+  queue: state.queue,
+  questionsCount: state.questions.length,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

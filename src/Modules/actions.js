@@ -1,8 +1,24 @@
-const setInput = value => (
+export const setInput = answer => (
   {
     type: 'INPUT',
-    value,
+    answer,
   }
 );
 
-export default setInput;
+export const nextPage = () => (
+  {
+    type: 'NEXT_QUEUE',
+  }
+);
+
+export const prevPage = () => (
+  {
+    type: 'PREV_QUEUE',
+  }
+);
+
+export const reload = () => (
+  {
+    type: 'RELOAD_APP',
+  }
+);

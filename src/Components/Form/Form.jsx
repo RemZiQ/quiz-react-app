@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment } from 'react';
 
 // const Form = ({ onSubmitInput }) => {
 //   const [inputValue, setInputValue] = useState();
@@ -38,12 +38,16 @@ class Form extends React.Component {
 
   render() {
     const { inputValue } = this.state;
-    return (
+    const { queue, questionsCount } = this.props;
+    console.log(queue, questionsCount);
+    const form = (
       <form onSubmit={this.onSubmitHandler}>
         <input value={inputValue} type="text" onChange={this.onChangeHandler} />
-        {console.log(inputValue)}
         <button type="submit">Submit</button>
       </form>
+    );
+    return (
+      <Fragment>{!(queue === questionsCount) && form }</Fragment>
     );
   }
 }

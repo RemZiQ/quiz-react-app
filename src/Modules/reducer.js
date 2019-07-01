@@ -1,14 +1,30 @@
+import { questions, answers } from '../config';
+
+
 const initialState = {
-  input: [],
-  answers: [1, 2, 3],
+  answers: new Array(questions.length),
+  rightAnswers: answers,
+  questions,
+  queue: 0,
 };
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case 'INPUT':
-      return { ...state, ...{ input: [...state.input, action.value] } };
+    case 'INPUT': {
+      const newAnswers = [...state.answers];
+      newAnswers[state.queue] = action.answer;
+      return { ...state, ...{ answers: newAnswers } };
+    }
+    case 'NEXT_QUEUE':
+      return { ...state, ...{ queue: state.queue + 1 } };
+    case 'PREV_QUEUE':
+      return { ...state, ...{ queue: state.queue - 1 } };
+    case 'RELOAD_APP':
+      return { ...initialState };
     default: return state;
   }
 }
 
 export default reducer;
+
+// return { ...state, ...{ answers: initialState.answers } };
