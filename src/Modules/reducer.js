@@ -2,7 +2,7 @@ import { questions, answers } from '../config';
 
 
 const initialState = {
-  answers: new Array(questions.length),
+  answers: new Array(questions.length).fill(null),
   rightAnswers: answers,
   questions,
   queue: 0,

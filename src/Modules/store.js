@@ -1,4 +1,4 @@
-import { createStore } from 'redux'; // TODO: can be used react-redux for create-store??
+import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import reducer from './reducer';
