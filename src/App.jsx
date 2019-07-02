@@ -17,7 +17,6 @@ function App() {
         <Route path="/" exact component={Greeting} />
         <Route path="/quiz" exact component={PaginationButtons} />
         <Route path="/quiz" exact component={Question} />
-        <Route path="/quiz" exact component={Form} />
         <Route path="/quiz" exact component={EndQuiz} />
         <Route path="/results" exact component={Results} />
       </Provider>

@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
-const Question = ({ question, countOnAnswers, countOfQuestions }) => {
-  const message = countOnAnswers === countOfQuestions ? 'Quiz ended. Now you can check your answers'
-    : 'It`s last question go back, and answer on skiped questions';
-  return (
+import Form from '../Form';
+
+import './question.css';
+
+const Question = ({
+  question,
+  lastQuestion,
+  haveAnswer,
+  message,
+}) => (
+  <Fragment>
     <h2>{question ? `${question} ?` : message}</h2>
-  );
-};
+    {(!lastQuestion && !haveAnswer) ? <Form /> : null}
+    {haveAnswer && <p>You answer already counted</p>}
+  </Fragment>
+);
+
 
 export default Question;

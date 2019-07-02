@@ -1,0 +1,7 @@
+/* .question-form input[type="radio"] {
+  display: block;
+} */
+
+.question-form label {
+  display: block;
+}

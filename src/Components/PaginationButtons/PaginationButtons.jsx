@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react';
 
-const PaginationButtons = ({ prevPage, nextPage, queue }) => (
+
+// TODO: replace for only button component!
+
+const PaginationButtons = ({ prevPage, nextPage, queue, questionsCount }) => (
   <Fragment>
     <button
       onClick={prevPage}
@@ -11,7 +14,7 @@ const PaginationButtons = ({ prevPage, nextPage, queue }) => (
     </button>
     <button
       onClick={nextPage}
-      disabled={!!(queue > 1)}
+      disabled={!!(queue >= questionsCount)}
       type="button"
     >
       Next question

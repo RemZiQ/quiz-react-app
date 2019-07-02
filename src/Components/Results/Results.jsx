@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-const Results = ({ reloadApp, answers, rightAnswers }) => {
+const Results = ({ reloadApp, answers, rightAnswers, questions }) => {
   // TODO: add keys to checkedAnswers
   // Can we use generator id or React must to use only incoming data for keys?
   const checkedAnswers = answers.map((elem, index) => (

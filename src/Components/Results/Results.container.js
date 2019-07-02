@@ -10,7 +10,10 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   answers: state.answers,
-  rightAnswers: state.rightAnswers,
+  rightAnswers: state.questions.map(elem => elem.correctAnswer),
+  questions: state.questions,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Results);
+
+// correctAnswer

@@ -1,9 +1,8 @@
-import { questions, answers } from '../config';
+import questions from '../config';
 
 
 const initialState = {
   answers: new Array(questions.length).fill(null),
-  rightAnswers: answers,
   questions,
   questionNumber: 0,
   countOnAnswers: 0,

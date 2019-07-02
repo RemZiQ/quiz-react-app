@@ -2,8 +2,12 @@ import { connect } from 'react-redux';
 import PaginationButtons from './PaginationButtons';
 import { nextPage, prevPage } from '../../Modules/actions';
 
+
 const mapStateToProps = state => (
-  { queue: state.questionNumber }
+  {
+    queue: state.questionNumber,
+    questionsCount: state.questions.length,
+  }
 );
 
 const mapDispatchToProps = dispatch => ({

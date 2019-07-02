@@ -1,58 +1,43 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 
-// const Form = ({ onSubmitInput }) => {
-//   const [inputValue, setInputValue] = useState();
-//   const onChangeHandler = e => setInputValue(e.target.value);
-//   const onSubmitHandler = (e) => {
-//     e.preventDefault();
-//     onSubmitInput(inputValue);
-//     setInputValue('');
-//   };
+const Form = ({ onSubmitForm, asnwerVariantsProp }) => {
+  const [answer, setAnswer] = useState(null);
 
-//   return (
-//     <form onSubmit={onSubmitHandler}>
-//       <input value={inputValue} type="text" onChange={onChangeHandler} />
-//       {console.log(inputValue)}
-//       <button type="submit">Submit</button>
-//     </form>
-//   );
-// };
-
-class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputValue: '',
-    };
-  }
-
-  onChangeHandler = e => this.setState({ inputValue: e.target.value });
-
-  onSubmitHandler = (e) => {
-    const { onSubmitInput } = this.props;
-    const { inputValue } = this.state;
-    e.preventDefault();
-    onSubmitInput(inputValue);
-    this.setState({ inputValue: '' });
+  const handleSetAnswerToState = (e) => {
+    setAnswer(e.target.value);
   };
 
-  render() {
-    const { inputValue } = this.state;
-    const { moreQuestions, alreadyHaveAnswer, currentAnswer } = this.props;
-    const form = (
-      <form onSubmit={this.onSubmitHandler}>
-        <input value={inputValue} type="text" onChange={this.onChangeHandler} />
+  const handlerOnSubmitForm = (e) => {
+    e.preventDefault();
+    onSubmitForm(answer);
+    setAnswer(null);
+    e.target.reset();
+  };
+  const answerVariants = asnwerVariantsProp.map((elem, index) => {
+    // have always static answers, so can use key=index
+    return (
+      <label htmlFor={index} key={index}>
+        <input
+          onClick={handleSetAnswerToState}
+          type="radio"
+          id={index}
+          value={elem}
+          name="answer"
+        />
+        {elem}
+      </label>
+    );
+  });
+
+  return (
+    <Fragment>
+      <form className="question-form" onSubmit={handlerOnSubmitForm}>
+        {answerVariants}
         <button type="submit">Submit</button>
       </form>
-    );
-    return (
-      <Fragment>
-        {moreQuestions && !alreadyHaveAnswer && form }
-        <p>{alreadyHaveAnswer && `Your answer is counted: ${currentAnswer}`}</p>
-      </Fragment>
-    );
-  }
-}
+    </Fragment>
+  );
+};
 
 
 export default Form;
