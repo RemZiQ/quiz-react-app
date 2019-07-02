@@ -22,3 +22,9 @@ export const reload = () => (
     type: 'RELOAD_APP',
   }
 );
+
+export const countAnswers = () => (
+  {
+    type: 'ANSWER_INCREMENT',
+  }
+);

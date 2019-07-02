@@ -38,8 +38,7 @@ class Form extends React.Component {
 
   render() {
     const { inputValue } = this.state;
-    const { queue, questionsCount } = this.props;
-    console.log(queue, questionsCount);
+    const { moreQuestions, alreadyHaveAnswer, currentAnswer } = this.props;
     const form = (
       <form onSubmit={this.onSubmitHandler}>
         <input value={inputValue} type="text" onChange={this.onChangeHandler} />
@@ -47,7 +46,10 @@ class Form extends React.Component {
       </form>
     );
     return (
-      <Fragment>{!(queue === questionsCount) && form }</Fragment>
+      <Fragment>
+        {moreQuestions && !alreadyHaveAnswer && form }
+        <p>{alreadyHaveAnswer && `Your answer is counted: ${currentAnswer}`}</p>
+      </Fragment>
     );
   }
 }

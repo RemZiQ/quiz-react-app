@@ -3,7 +3,7 @@ import PaginationButtons from './PaginationButtons';
 import { nextPage, prevPage } from '../../Modules/actions';
 
 const mapStateToProps = state => (
-  { queue: state.queue }
+  { queue: state.questionNumber }
 );
 
 const mapDispatchToProps = dispatch => ({

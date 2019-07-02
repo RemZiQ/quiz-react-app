@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 const Results = ({ reloadApp, answers, rightAnswers }) => {
   // TODO: add keys to checkedAnswers
   // Can we use generator id or React must to use only incoming data for keys?
-  console.log('answers', answers);
-  console.log('rightAnswers', rightAnswers);
   const checkedAnswers = answers.map((elem, index) => (
     <li>{+elem === rightAnswers[index] ? `Correct!${elem}` : `Wrong! The correct answer is ${rightAnswers[index]}`}</li>
   ));

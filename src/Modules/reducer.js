@@ -5,20 +5,23 @@ const initialState = {
   answers: new Array(questions.length).fill(null),
   rightAnswers: answers,
   questions,
-  queue: 0,
+  questionNumber: 0,
+  countOnAnswers: 0,
 };
 
 function reducer(state = initialState, action) {
   switch (action.type) {
     case 'INPUT': {
       const newAnswers = [...state.answers];
-      newAnswers[state.queue] = action.answer;
+      newAnswers[state.questionNumber] = action.answer;
       return { ...state, ...{ answers: newAnswers } };
     }
     case 'NEXT_QUEUE':
-      return { ...state, ...{ queue: state.queue + 1 } };
+      return { ...state, ...{ questionNumber: state.questionNumber + 1 } };
     case 'PREV_QUEUE':
-      return { ...state, ...{ queue: state.queue - 1 } };
+      return { ...state, ...{ questionNumber: state.questionNumber - 1 } };
+    case 'ANSWER_INCREMENT':
+      return { ...state, ...{ countOnAnswers: state.countOnAnswers + 1 } };
     case 'RELOAD_APP':
       return { ...initialState };
     default: return state;

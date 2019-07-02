@@ -1,1 +1,1 @@
-export { default } from './EndQuiz.container';
+export { default } from './EndQuiz';

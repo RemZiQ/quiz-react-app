@@ -4,7 +4,9 @@ import Question from './Question';
 
 const mapStateToProps = state => (
   {
-    question: state.questions[state.queue],
+    question: state.questions[state.questionNumber],
+    countOnAnswers: state.countOnAnswers,
+    countOfQuestions: state.questions.length,
   }
 );
 
